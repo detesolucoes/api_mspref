@@ -73,14 +73,18 @@ app.post("/get-report", (req, res) => {
 });
 
 app.listen(3333, () => {
-    console.log("Servidor iniciado.");
+    console.log("Servidor iniciado - Access and file report pdf.");
 });
 
-// acesso ao arquivo via url estatica
-const app2 = express();
+// // acesso ao arquivo via url estatica
+// const app2 = express();
 
-app2.use('/report', express.static(__dirname + '/reports'));
+// app2.use('/report', express.static(__dirname + '/reports'));
 
-app2.listen(3334, () => {
-    console.log("Servidor iniciado.");
-});
+// app2.get("/", (req, res) => {
+//     res.send("Dete Soluções - www.detesolucoes.com.br");
+// });
+
+// app2.listen(3334, () => {
+//     console.log("Servidor iniciado - Get Files (Reports).");
+// });
