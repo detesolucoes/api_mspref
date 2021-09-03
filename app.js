@@ -59,6 +59,8 @@ app.post("/get-report", (req, res) => {
 
         await browser.close();
 
+        const pathFile = __dirname+'/'+req.body.directoryFiles+'/'+req.body.file;
+
         try {
             if (fs.existsSync(pathFile)) {
                 return res.json({status: "success", message: "Relatório gerado com sucesso", file: pathFile, error: null});
