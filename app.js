@@ -65,7 +65,7 @@ app.post("/get-report", (req, res) => {
             if (fs.existsSync(pathFile)) {
                 return res.json({
                     status: "success", 
-                    message: "Relatório gerado com sucesso", 
+                    message: "Relatório gerado com sucesso.", 
                     file: req.body.file, 
                     urlFile: req.body.urlFile, 
                     error: null
@@ -73,7 +73,7 @@ app.post("/get-report", (req, res) => {
             }
         } catch(err) {
             console.error("Ops! "+err)
-            return res.json({status: "error", message: "Erro ao gerar relatório", file: null, error: err});
+            return res.json({status: "error", message: "Erro ao gerar relatório.", file: null, error: err});
         }
     })();
 });
