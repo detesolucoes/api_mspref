@@ -39,7 +39,7 @@ app.post("/get-report", (req, res) => {
 
         await page.goto(req.body.urlLogin);
         await delay(1000);
-        await page.goto(req.body.urlReport);
+        await page.goto(req.body.urlDownload);
 
         await downloadFile(page, req.body.directoryFiles);
 
@@ -63,7 +63,7 @@ app.post("/get-report", (req, res) => {
 
         try {
             if (fs.existsSync(pathFile)) {
-                return res.json({status: "success", message: "Relatório gerado com sucesso", file: pathFile, error: null});
+                return res.json({status: "success", message: "Relatório gerado com sucesso", file: req.body.file, error: null});
             }
         } catch(err) {
             console.error("Ops! "+err)
@@ -76,15 +76,15 @@ app.listen(3333, () => {
     console.log("Servidor iniciado - Access and file report pdf.");
 });
 
-// // acesso ao arquivo via url estatica
-// const app2 = express();
+// acesso ao arquivo via url estatica
+const app2 = express();
 
-// app2.use('/report', express.static(__dirname + '/reports'));
+app2.use('/report', express.static(__dirname + '/reports'));
 
-// app2.get("/", (req, res) => {
-//     res.send("Dete Soluções - www.detesolucoes.com.br");
-// });
+app2.get("/", (req, res) => {
+    res.send("Dete Soluções - www.detesolucoes.com.br");
+});
 
-// app2.listen(3334, () => {
-//     console.log("Servidor iniciado - Get Files (Reports).");
-// });
+app2.listen(3334, () => {
+    console.log("Servidor iniciado - Get Files (Reports).");
+});
